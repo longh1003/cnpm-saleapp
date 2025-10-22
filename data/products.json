@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Iphone 20 Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091967/419VTYVRD1L._AC__vih8qs.jpg",
+    "price": 99999999,
+    "cate_id": 2
+  },
+  {
+    "id": 2,
+    "name": "Samsung S20 Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091967/419VTYVRD1L._AC__vih8qs.jpg",
+    "price": 99999999,
+    "cate_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Motorola 20 Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091967/419VTYVRD1L._AC__vih8qs.jpg",
+    "price": 99999999,
+    "cate_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Microsoft Surface Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091983/61896OtgvGL_xi09hb.jpg",
+    "price": 99999999,
+    "cate_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Ipad 20 Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091983/61896OtgvGL_xi09hb.jpg",
+    "price": 99999999,
+    "cate_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Asus Gaming Vjp",
+    "image": "https://res.cloudinary.com/dy1unykph/image/upload/v1729091983/61896OtgvGL_xi09hb.jpg",
+    "price": 99999999,
+    "cate_id": 1
+  }
+]
