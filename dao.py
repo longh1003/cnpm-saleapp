@@ -2,16 +2,19 @@ import json
 
 def load_categories():
     with open("data/categories.json", encoding="utf-8") as f:
-        return json.load(f)
+        cate = json.load(f)
+        return cate
 
-
-def load_products(q=None):
+def load_products(q=None, id=None):
     with open("data/products.json", encoding="utf-8") as f:
         products = json.load(f)
 
         if q:
             products = [ p for p in products if p["name"].find(q) >= 0]
+
+        if id:
+            products = [ p for p in products if p["cate_id"].__eq__(int(id))]
         return products
 
 if __name__=="__main__":
-    print(load_products("Samsung"))
+    pass
