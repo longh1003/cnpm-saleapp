@@ -20,6 +20,12 @@ def details(id):
     product = dao.load_products_by_id(id)
     return render_template("product-details.html", product=product)
 
+@app.context_processor
+def common_attribute():
+    return {
+        "cates": dao.load_categories()
+    }
+
 if __name__=="__main__":
     with app.app_context():
         app.run(debug=True)

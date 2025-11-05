@@ -21,9 +21,11 @@ def load_products_by_id(id):
         products = json.load(f)
     if id:
         products = [ p for p in products if p["id"].__eq__(int(id))]
-        print()
+        print(products)
+
     # fix this
     return products
 
 if __name__=="__main__":
+    print(load_products_by_id(1))
     pass
