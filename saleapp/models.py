@@ -1,3 +1,4 @@
+import json
 
 from saleapp import app,db
 from sqlalchemy import Column, Integer, Float, String, ForeignKey
@@ -20,9 +21,14 @@ class Product(db.Model):
 if __name__=="__main__":
     with app.app_context():
         # db.create_all()
-        c1 = Category(name="Laptop")
-        c2 = Category(name="Mobile")
-        c3 = Category(name="Tablet")
+        # c1 = Category(name="Laptop")
+        # c2 = Category(name="Mobile")
+        # c3 = Category(name="Tablet")
+        #
+        # db.session.add_all([c1, c2, c3])
+        # db.session.commit()
 
-        db.session.add_all([c1, c2, c3])
-        db.session.commit()
+        with open("data/products.json", encoding="utf-8") as f:
+            products = json.load(f)
+        for p in products:
+            pass

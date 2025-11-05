@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
-
+from saleapp import app
 import dao
 from dao import load_categories, load_products
 
-app = Flask(__name__)
 
 @app.route("/")
 def index():
