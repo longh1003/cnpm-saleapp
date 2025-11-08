@@ -29,14 +29,17 @@ def load_products(q=None, cate_id=None):
     return query.all()
 
 def load_products_by_id(id):
-    with open("data/products.json", encoding="utf-8") as f:
-        products = json.load(f)
-    if id:
-        products = [ p for p in products if p["id"].__eq__(int(id))]
-        print(products)
-
+    # with open("data/products.json", encoding="utf-8") as f:
+    #     products = json.load(f)
+    # if id:
+    #     products = [ p for p in products if p["id"].__eq__(int(id))]
+    #     print(products)
+    #
     # fix this
-    return products
+    # return products
+    query = Product.query
+    query = query.get(id)
+
 
 if __name__=="__main__":
     with app.app_context():

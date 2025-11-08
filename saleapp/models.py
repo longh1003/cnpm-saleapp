@@ -28,7 +28,16 @@ if __name__=="__main__":
         # db.session.add_all([c1, c2, c3])
         # db.session.commit()
 
-        with open("data/products.json", encoding="utf-8") as f:
-            products = json.load(f)
-        for p in products:
-            pass
+        # with open("data/products.json", encoding="utf-8") as f:
+        #     products = json.load(f)
+        # for p in products:
+        #     p = Product(
+        #         name=p["name"],
+        #         image=p["image"],
+        #         price=p["price"],
+        #         cate_id=p["cate_id"]
+        #     )
+        #     db.session.add(p)
+        #
+        # db.session.commit()
+        pass
