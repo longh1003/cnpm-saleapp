@@ -10,7 +10,7 @@ def load_categories():
     #     return cate
     return Category.query.all()
 
-def load_products(q=None, cate_id=None):
+def load_products(q=None, cate_id=None, page=None):
     # with open("data/products.json", encoding="utf-8") as f:
     #     products = json.load(f)
     #
@@ -26,7 +26,16 @@ def load_products(q=None, cate_id=None):
         query = query.filter(Product.name.contains(q))
     if cate_id:
         query = query.filter(Product.cate_id.__eq__(cate_id))
+    if page:
+        size = app.config["PAGE_SIZE"]
+        start = (int(page)-1)*size
+        end = start+size
+        query = query.slice(start, end)
+
     return query.all()
+
+def count_product():
+    return Product.query.count()
 
 def load_products_by_id(id):
     # with open("data/products.json", encoding="utf-8") as f:
