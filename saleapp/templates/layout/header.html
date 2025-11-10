@@ -13,7 +13,11 @@
                 {% for c in cates %}
                 <li class="nav-item">
                     <a class="nav-link" href="/?cate_id={{c.id}}" >{{c.name}}</a>
-                    {% endfor %}
+                </li>
+                {% endfor %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="/login" >Đăng nhập&#128110;</a>
+                </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Nhập từ khóa..." name="q">

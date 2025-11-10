@@ -17,6 +17,15 @@ def index():
     pages = math.ceil(dao.count_product()/app.config["PAGE_SIZE"])
     return render_template("index.html", name=name, cates=cates, prods=prods, pages=pages)
 
+@app.route("/login", methods=['get', 'post'])
+def login():
+    if request.method.__eq__('POST'):
+        username = request.form.get('username')
+        password = request.form.get('password')
+        print(username)
+        print(password)
+    return render_template("login.html")
+
 
 @app.route("/products/<int:id>")
 def details(id):
