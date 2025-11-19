@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, Float, String, ForeignKey, Boolean, Date
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from enum import Enum as EnumRole
+from flask_login import UserMixin
 
 class Base(db.Model):
     __abstract__=True
@@ -30,7 +31,7 @@ class Product(Base):
     cate_id = Column(Integer, ForeignKey(Category.id), nullable=False)
 
 
-class User(Base):
+class User(Base, UserMixin):
     username = Column(String(20), nullable=False, unique=True)
     password = Column(String(50), nullable=False)
     avatar = Column(String(300), default="https://res.cloudinary.com/dy1unykph/image/upload/v1729091967/419VTYVRD1L._AC__vih8qs.jpg")
@@ -59,4 +60,11 @@ if __name__=="__main__":
         #     db.session.add(p)
         #
         # db.session.commit()
+        import hashlib
+
+        password = hashlib.md5("123".encode("utf-8")).hexdigest()
+
+        u1 = User(name="test user",username="user", password=password)
+        db.session.add(u1)
+        db.session.commit()
         pass
