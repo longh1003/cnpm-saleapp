@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.theme import Bootstrap4Theme
 
 app = Flask(__name__)
 
@@ -11,3 +13,4 @@ app.secret_key = "digdigdidgididgidi"
 
 db = SQLAlchemy(app)
 login = LoginManager(app)
+admin = Admin(app=app, name="Ecom", theme=Bootstrap4Theme)
