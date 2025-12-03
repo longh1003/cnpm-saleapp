@@ -1,5 +1,6 @@
 import math
 
+import cloudinary.uploader
 from flask import Flask, render_template, request, redirect
 from saleapp import app, login, admin ,db
 import dao
@@ -57,9 +58,11 @@ def register():
     else:
         name = request.form.get('name')
         username = request.form.get('username')
+        avatar = request.files.get('avatar')
+        print(avatar)
         file_path = ""
         try:
-
+            file_path = cloudinary.uploader.upload(avatar)
             dao.add_user(name,username,password,file_path)
         except:
             db.session.rollback()

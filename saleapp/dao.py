@@ -44,9 +44,9 @@ def auth_user(username, password):
     return User.query.filter(User.username.__eq__(username), User.password.__eq__(password)).first()
 
 
-def add_user(name, username, password):
+def add_user(name, username, password, avatar):
     password = hashlib.md5(password.encode("utf-8")).hexdigest()
-    user = User(name=name, username=username, password=password)
+    user = User(name=name, username=username, password=password, avatar=avatar)
 
     db.session.add(user)
     db.session.commit()
