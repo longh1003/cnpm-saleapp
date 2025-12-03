@@ -1,10 +1,18 @@
-{% extends 'admin/master.html' %}
+{%extends 'layout/base.html'%}
+{%block header%}
+{%endblock%}
 
-{% block body %}
+{%block content%}
 
-<form method="post" action="/admin-login">
+<form method="post" action="/register" enctype="multipart/form-data">
     <div class="form-group mb-3 mt-3">
-        <label for="username">Nhập tài khoản</label>
+        <label for="name">Họ và tên</label>
+        <input type="text" class="form-control" id="name" placeholder="Nhập họ tên" name="name">
+
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label for="username">Tên tài khoản</label>
         <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản" name="username">
 
     </div>
@@ -13,6 +21,16 @@
         <label for="password">Nhập mật khẩu</label>
         <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password">
 
+    </div>
+
+    <div class="form-group mt-3 mb-3">
+        <label for="confirm">Xác nhận mật khẩu</label>
+        <input type="password" class="form-control" id="confirm" placeholder="Nhập mật khẩu" name="confirm">
+
+    </div>
+
+    <div class="form-group mt-3 mb-3">
+       <input class="btn" type="file" name="avatar"></input>
     </div>
 
     <div class="form-group mt-3 mb-3">

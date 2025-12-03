@@ -1,7 +1,7 @@
 import math
 
 from flask import Flask, render_template, request, redirect
-from saleapp import app, login
+from saleapp import app, login, admin ,db
 import dao
 from dao import load_categories, load_products
 from flask_login import login_user, current_user, logout_user
@@ -33,6 +33,40 @@ def login_my_user():
             return redirect("/")
 
     return render_template("login.html")
+
+@app.route('/admin-login', methods=['post'])
+def admin_login_process():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    user = dao.auth_user(username, password)
+
+    if user:
+        login_user(user)
+        return redirect('/admin')
+    else:
+        err_msg = "Tài khoản hoặc mật khẩu không đúng!"
+
+@app.route('/register', methods=['get', 'post'])
+def register():
+    err_msg = ""
+    password = request.form.get('password')
+    confirm = request.form.get('confirm')
+    if password!=confirm:
+        err_msg = "Mật khẩu không trùng!"
+    else:
+        name = request.form.get('name')
+        username = request.form.get('username')
+        file_path = ""
+        try:
+
+            dao.add_user(name,username,password,file_path)
+        except:
+            db.session.rollback()
+            err_msg = 'Hệ thống đang lỗi. Vui lòng thử lại sau'
+
+    return render_template("register.html", err_msg=err_msg)
+
 
 @login.user_loader
 def get_user(user_id):

@@ -37,6 +37,9 @@ class User(Base, UserMixin):
     avatar = Column(String(300), default="https://res.cloudinary.com/dy1unykph/image/upload/v1729091967/419VTYVRD1L._AC__vih8qs.jpg")
     role = Column(Enum(UserRole), default=UserRole.USER)
 
+    def __str__(self):
+        return self.name
+
 
 if __name__=="__main__":
     with app.app_context():
@@ -47,7 +50,7 @@ if __name__=="__main__":
         #
         # db.session.add_all([c1, c2, c3])
         # db.session.commit()
-
+        #
         # with open("data/products.json", encoding="utf-8") as f:
         #     products = json.load(f)
         # for p in products:
