@@ -2,7 +2,7 @@ import math
 
 import cloudinary.uploader
 from flask import Flask, render_template, request, redirect, session, jsonify
-from saleapp import app, login, admin ,db
+from saleapp import app, login, admin ,db, utils
 import dao
 from dao import load_categories, load_products
 from flask_login import login_user, current_user, logout_user
@@ -118,10 +118,7 @@ def add_to_cart():
 
     print(session['cart'])
 
-    return jsonify({
-        'total_quantity': 0,
-        "total_amount": 0
-    })
+    return jsonify(utils.count_cart(cart))
 
 
 @login.user_loader
