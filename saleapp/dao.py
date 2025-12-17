@@ -45,12 +45,11 @@ def auth_user(username, password):
 
 
 def add_user(name, username, password, avatar):
-    password = hashlib.md5(password.encode("utf-8")).hexdigest()
-    user = User(name=name, username=username, password=password, avatar=avatar)
-
-    db.session.add(user)
-    db.session.commit()
-    return user
+    def add_user(name, username, password, avatar):
+        password = hashlib.md5(password.encode('utf-8')).hexdigest()
+        u = User(name=name, username=username.strip(), password=password.strip(), avatar=avatar)
+        db.session.add(u)
+        db.session.commit()
 
 
 def get_user_by_id(user_id):

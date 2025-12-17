@@ -43,31 +43,26 @@ class User(Base, UserMixin):
 
 if __name__=="__main__":
     with app.app_context():
-        # db.create_all()
-        # c1 = Category(name="Laptop")
-        # c2 = Category(name="Mobile")
-        # c3 = Category(name="Tablet")
-        #
-        # db.session.add_all([c1, c2, c3])
-        # db.session.commit()
-        #
-        # with open("data/products.json", encoding="utf-8") as f:
-        #     products = json.load(f)
-        # for p in products:
-        #     p = Product(
-        #         name=p["name"],
-        #         image=p["image"],
-        #         price=p["price"],
-        #         cate_id=p["cate_id"]
-        #     )
-        #     db.session.add(p)
-        #
-        # db.session.commit()
+        db.create_all()
+        c1 = Category(name="Laptop")
+        c2 = Category(name="Mobile")
+        c3 = Category(name="Tablet")
+
+        db.session.add_all([c1, c2, c3])
+
+        with open("data/products.json", encoding="utf-8") as f:
+            products = json.load(f)
+
+            for p in products:
+                db.session.add(Product(**p))
+
         import hashlib
 
         password = hashlib.md5("123".encode("utf-8")).hexdigest()
 
         u1 = User(name="test user",username="user", password=password)
+        u2 = User(name="admin", username="admin", password=password, role=UserRole.ADMIN)
         db.session.add(u1)
+        db.session.add(u2)
         db.session.commit()
         pass
